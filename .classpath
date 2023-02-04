@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="perimeter_quiz/|perimeter/|hello/" kind="src" path=""/>
+	<classpathentry kind="src" path="hello"/>
+	<classpathentry kind="src" path="perimeter"/>
+	<classpathentry kind="src" path="perimeter_quiz"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
