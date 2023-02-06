@@ -1,7 +1,6 @@
 public class Part3
 {
-    public boolean twoOccurrences(String stringa, String stringb)
-    {
+    public boolean twoOccurrences(String stringa, String stringb) {
         // If stringa appears at least twice in stringb returns true
         int foo = stringb.indexOf(stringa);
         if (foo != -1) {
@@ -11,6 +10,15 @@ public class Part3
             }
         }
         return false;
+    }
+    
+    public String lastPart(String stringa, String stringb) {
+        int indexOfStringaInStringb = stringb.indexOf(stringa);
+        String result = stringb;
+        if (indexOfStringaInStringb != -1) {
+            result = stringb.substring(indexOfStringaInStringb + stringa.length());
+        }
+        return result;
     }
     
     public void testing() {
@@ -33,5 +41,33 @@ public class Part3
         boolean resultTest3 = twoOccurrences(test3stringa, test3stringb);
         System.out.println("string a = " + test3stringa + "\nstring b = " + test3stringb + "\nresult = " + resultTest3);
         System.out.println(line);
+    }
+    
+    public void testingLastPart() {
+        String stringa1 = "an";
+        String stringb1 = "banana";
+        System.out.println("Initial full string = " + stringb1);
+        System.out.println("string a is = " + stringa1);
+        String result1 = lastPart(stringa1, stringb1);
+        System.out.println("Remainder String = " + result1);
+        System.out.println("\n");
+        
+        String stringa2 = "zoo";
+        String stringb2 = "forest";
+        System.out.println("Initial full string = " + stringb2);
+        System.out.println("string a is = " + stringa2);
+        String result2 = lastPart(stringa2, stringb2);
+        System.out.println("Remainder String = " + result2);
+        System.out.println("\n");
+        
+        
+        String stringa3 = "an";
+        String stringb3 = "there was a spider in the banana tree";
+        System.out.println("Initial full string = " + stringb3);
+        System.out.println("string a is = " + stringa3);
+        String result3 = lastPart(stringa3, stringb3);
+        System.out.println("Remainder String = " + result3);
+        System.out.println("\n");
+        
     }
 }
