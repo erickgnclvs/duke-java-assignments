@@ -1,33 +1,37 @@
-
-/**
- * Write a description of class Part3 here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Part3
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Part3
-     */
-    public Part3()
+    public boolean twoOccurrences(String stringa, String stringb)
     {
-        // initialise instance variables
-        x = 0;
+        // If stringa appears at least twice in stringb returns true
+        int foo = stringb.indexOf(stringa);
+        if (foo != -1) {
+            int bar = stringb.indexOf(stringa, foo+1);
+            if (bar != -1) {
+                return true;
+            }
+        }
+        return false;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public void testing() {
+        String test1stringa = "by";
+        String test1stringb = "A story by Abby Long";
+        String test2stringa = "a";
+        String test2stringb = "banana";
+        String test3stringa = "atg";
+        String test3stringb = "ctgtatgta";
+        String line = "\n";
+        
+        boolean resultTest1 = twoOccurrences(test1stringa, test1stringb);
+        System.out.println("string a = " + test1stringa + "\nstring b = " + test1stringb + "\nresult = " + resultTest1);
+        System.out.println(line);
+        
+        boolean resultTest2 = twoOccurrences(test2stringa, test2stringb);
+        System.out.println("string a = " + test2stringa + "\nstring b = " + test2stringb + "\nresult = " + resultTest2);
+        System.out.println(line);
+        
+        boolean resultTest3 = twoOccurrences(test3stringa, test3stringb);
+        System.out.println("string a = " + test3stringa + "\nstring b = " + test3stringb + "\nresult = " + resultTest3);
+        System.out.println(line);
     }
 }
