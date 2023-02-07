@@ -1,33 +1,68 @@
-
-/**
- * Write a description of class Part3 here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Part3
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Part3
-     */
-    public Part3()
-    {
-        // initialise instance variables
-        x = 0;
+    public int findStopCodon(String dna, int startIndex, String stopCodon) {
+        int currIndex = dna.indexOf(stopCodon, startIndex+3);
+        while (currIndex != -1) {
+            int diff = currIndex - startIndex;
+            if (diff % 3 == 0) {
+                return currIndex;
+            } else {
+                currIndex = dna.indexOf(stopCodon, currIndex+1);
+            }
+        }
+        int length = dna.length();
+        return length;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public String findGene(String dna, int index) {
+        int startIndex = dna.indexOf("ATG", index);
+        if (startIndex == -1) {
+            return "";
+        }
+        int taaIndex = findStopCodon(dna, startIndex, "TAA");
+        int tagIndex = findStopCodon(dna, startIndex, "TAG");
+        int tgaIndex = findStopCodon(dna, startIndex, "TGA");
+        int minIndex = 0;
+        if (taaIndex != -1 || (tgaIndex != -1 && tgaIndex < taaIndex)) {
+            minIndex = tgaIndex;
+        } else {
+            minIndex = taaIndex;
+        }
+        if (minIndex == -1 || (tagIndex != -1 && tagIndex < minIndex)) {
+            minIndex = tagIndex;
+        }
+        if (minIndex == -1) {
+            return "";
+        }
+        return dna.substring(startIndex, minIndex+3);
     }
+    
+    public int printAllGenes(String dna) {
+        int startIndex = 0;
+        int counter = 0;
+        while (true) {
+            String currentGene = findGene(dna, startIndex);
+            if (currentGene.isEmpty()) {
+                break;
+            }
+            System.out.println(currentGene);
+            counter++;
+            if (!currentGene.isEmpty()) {
+                startIndex = dna.indexOf(currentGene, startIndex) + currentGene.length();
+            }
+            // startIndex = dna.indexOf(currentGene, startIndex) + currentGene.length();
+        }
+        return counter;
+    }
+    
+    public int countGenes(String dna){
+        int counter = printAllGenes(dna);
+        return counter;
+    }
+    
+    public void testCountGenes() {
+        int counter = countGenes("ATGATCTAATTTATGCTGCAACGGTGAAGA");
+        System.out.println(counter + "\n");
+    }
+    
 }
