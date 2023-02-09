@@ -10,10 +10,9 @@ public class Part3
                 currIndex = dna.indexOf(stopCodon, currIndex+1);
             }
         }
-        int length = dna.length();
-        return length;
+        return dna.length();
     }
-    
+
     public String findGene(String dna, int index) {
         int startIndex = dna.indexOf("ATG", index);
         if (startIndex == -1) {
@@ -22,7 +21,7 @@ public class Part3
         int taaIndex = findStopCodon(dna, startIndex, "TAA");
         int tagIndex = findStopCodon(dna, startIndex, "TAG");
         int tgaIndex = findStopCodon(dna, startIndex, "TGA");
-        int minIndex = 0;
+        int minIndex;
         if (taaIndex != -1 || (tgaIndex != -1 && tgaIndex < taaIndex)) {
             minIndex = tgaIndex;
         } else {
@@ -36,7 +35,7 @@ public class Part3
         }
         return dna.substring(startIndex, minIndex+3);
     }
-    
+
     public int printAllGenes(String dna) {
         int startIndex = 0;
         int counter = 0;
@@ -47,22 +46,23 @@ public class Part3
             }
             System.out.println(currentGene);
             counter++;
-            if (!currentGene.isEmpty()) {
-                startIndex = dna.indexOf(currentGene, startIndex) + currentGene.length();
-            }
+            startIndex = dna.indexOf(currentGene, startIndex) + currentGene.length();
             // startIndex = dna.indexOf(currentGene, startIndex) + currentGene.length();
         }
         return counter;
     }
-    
+
     public int countGenes(String dna){
-        int counter = printAllGenes(dna);
-        return counter;
+        return printAllGenes(dna);
     }
     
     public void testCountGenes() {
         int counter = countGenes("ATGATCTAATTTATGCTGCAACGGTGAAGA");
         System.out.println(counter + "\n");
     }
-    
+
+    public static void main(String[] args) {
+        Part3 object = new Part3();
+        object.testCountGenes();
+    }
 }

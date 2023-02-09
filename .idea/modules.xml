@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/StringsFirstAssignments/StringsFirstAssignments.iml" filepath="$PROJECT_DIR$/StringsFirstAssignments/StringsFirstAssignments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StringsSecondAssignments/StringsSecondAssignments.iml" filepath="$PROJECT_DIR$/StringsSecondAssignments/StringsSecondAssignments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StringsThirdAssignments/StringsThirdAssignments.iml" filepath="$PROJECT_DIR$/StringsThirdAssignments/StringsThirdAssignments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaduke.iml" filepath="$PROJECT_DIR$/javaduke.iml" />
+    </modules>
+  </component>
+</project>
